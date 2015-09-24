@@ -7,13 +7,16 @@
 <hr/>
 
 ## Installation
-Run the following command in your terminal:
+
+Assuming you have a working [Node.js](https://nodejs.org) installation, simply run the following command in your terminal
 
 ```bash
-npm install -g tomahawkcc
+npm install -g dschmidt/tomahawkcc
 ```
 
 and you should have the `tomahawkcc` command available.
+
+If you don't have Node.js installed, consider using [nvm](https://github.com/creationix/nvm) or similar.
 
 ## Usage
 

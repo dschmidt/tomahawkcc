@@ -1,0 +1,34 @@
+{
+  "name": "tomahawkcc",
+  "version": "0.0.0",
+  "description": "Tomahawk Compiler Collection",
+  "main": "index.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dschmidt/tomahawkcc.git"
+  },
+  "keywords": [
+    "tomahawk",
+    "resolver"
+  ],
+  "author": "Dominik Schmidt",
+  "license": "MIT",
+  "bin": {
+    "tomahawkcc": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/dschmidt/tomahawkcc/issues"
+  },
+  "homepage": "https://github.com/dschmidt/tomahawkcc",
+  "dependencies": {
+    "almond": "^0.3.1",
+    "babel": "^5.8.23",
+    "babel-concat": "^1.0.3",
+    "babel-core": "^5.8.25",
+    "fs-promise": "^0.3.1",
+    "lodash": "^3.10.1",
+    "rsvp": "^3.1.0",
+    "rsvp-party": "github:dschmidt/rsvp-party#fixup"
+  }
+}

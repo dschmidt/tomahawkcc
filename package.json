@@ -29,6 +29,6 @@
     "fs-promise": "^0.3.1",
     "lodash": "^3.10.1",
     "rsvp": "^3.1.0",
-    "rsvp-party": "github:dschmidt/rsvp-party#fixup"
+    "rsvp-party": "dschmidt/rsvp-party#fixup"
   }
 }

@@ -74,8 +74,20 @@ module.exports = function compiler(startModuleFileName) {
     };
 
 
-    return transformFile(__dirname + "/node_modules/almond/almond.js", null, 'ignore').then(function(result) {
-        codeResults['moduleLoader'] = result;
+    return transformFile(__dirname + "/node_modules/rsvp/dist/rsvp.js", null, 'ignore').then(function(result) {
+        codeResults['rsvp-global'] = result;
+    }).then(function() {
+        return transformFile(__dirname + "/node_modules/almond/almond.js", null, 'ignore').then(function(result) {
+            codeResults['moduleLoader'] = result;
+        });
+    }).then(function() {
+        return transformFile("imports/tomahawk/plugin-manager.js", 'tomahawk/plugin-manager').then(function(result) {
+            codeResults['tomahawk/plugin-manager'] = result;
+        });
+    }).then(function() {
+        return transformFile("imports/rsvp.js", 'rsvp').then(function(result) {
+            codeResults['rsvp'] = result;
+        });
     }).then(function() {
         return transformFile(startModuleFileName, 'main').then(function(startResult) {
             parseResult(startResult);
@@ -88,12 +100,16 @@ module.exports = function compiler(startModuleFileName) {
                     var importName = requiredImports[i];
                     requiredImports = without(requiredImports, importName);
 
-                    compilePromises.push(transformFile(importName+'.js', importName));
+                    compilePromises.push(transformFile('imports/'+importName+'.js', importName));
                 }
 
                 return RSVP.Promise.all(compilePromises).then(function(results) {
                     results.forEach(parseResult);
                 });
+            });
+        }).then(function() {
+            return transformFile("tomahawk-env.js", null, 'ignore').then(function(result) {
+                codeResults['tomahawkEnv'] = result;
             });
         }).then(function() {
             codeResults.usedHelpers = babel.transform(babel.buildExternalHelpers(usedHelpers), {

@@ -15,5 +15,6 @@ fs.lstat('tomahawk/resolver.js').then(function(stats) {
 }).then(function(output) {
     console.log(output.code);
 }, function(err) {
+    console.error(err.stack);
     console.error(err);
 });

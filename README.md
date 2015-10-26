@@ -25,3 +25,9 @@ Simply go to the `tomahawk-resolvers` root folder and invoke it like so:
 ```bash
 tomahawkcc soundcloud/content/contents/code/soundcloud.js > outputfile.js
 ```
+
+## Build standalone executable
+
+```bash
+jx package index.js "tomahawkcc" --extract-what "*.node,./content" --extract-overwrite --extract-verbose --extract-app-root --native
+```
